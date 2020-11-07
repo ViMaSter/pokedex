@@ -5,10 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DB {
-	public DB() throws SQLException
+	public static ArrayList<Employee> GetEmployees() throws SQLException
 	{
+		ArrayList<Employee> employees = new ArrayList<Employee>();
 	    Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=localDB;user=sa;password=Od1P_DMu_LF2qw3UtGzwX1fxJCv-cB3N");
 
 	    PreparedStatement statement = con.prepareStatement("SELECT * from employees");
@@ -17,8 +19,8 @@ public class DB {
 		while (set.next())
 		{
 			++count;
-			System.out.println("Employee: " + set.getString("name") + "(" + set.getInt("id") + ")");
+			employees.add(new Employee(set.getInt("id"), set.getString("name")));
 		}
-		System.out.println("Result count: " + count);
+		return employees;
 	}
 }
