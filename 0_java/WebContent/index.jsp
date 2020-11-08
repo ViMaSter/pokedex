@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="pokedex.DB" %>
-<%@ page import="pokedex.Employee" %>
+<%@ page import="pokedex.Pokemon" %>
 <%@ page import="java.util.ArrayList" %>
     
     
 <%
-	ArrayList<Employee> employees = pokedex.DB.GetEmployees();
+	ArrayList<Pokemon> Pokemons = pokedex.DB.GetAllPokemon();
 %>
 <!DOCTYPE html>
 <html>
@@ -24,12 +24,12 @@
 	</thead>
 	<tbody>
 <%
-	for (Employee employee : employees)
+	for (Pokemon Pokemon : Pokemons)
 	{
 		%>
 		<tr>
-			<td><%= employee.getID() %></td>
-			<td><%= employee.getName() %></td>
+			<td><%= Pokemon.getID() %></td>
+			<td><%= Pokemon.getName() %></td>
 		</tr>
 		<%
 	}

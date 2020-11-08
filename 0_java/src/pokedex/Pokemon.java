@@ -1,10 +1,10 @@
 package pokedex;
 
-public class Employee
+public class Pokemon
 {
 	private int ID;
 	private String Name;
-	public Employee(int ID, String Name)
+	public Pokemon(int ID, String Name)
 	{
 		this.ID = ID;
 		this.Name = Name;
